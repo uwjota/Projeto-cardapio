@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slider-item {
+  transition: opacity 0.3s ease;
+}
+
+
+/* Esconde a barra de rolagem dentro do slider */
+.slider-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Barra de progresso customizada */
+.scrollbar {
+  height: 4px;
+  background: #df1b05;
+  width: 100%;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* Personalização da barra de rolagem principal */
+body::-webkit-scrollbar {
+  width: 10px; /* Largura da barra */
+}
+
+body::-webkit-scrollbar-track {
+  background: #000000; /* Cor de fundo da barra */
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #df1b05; /* Cor da barra (polegar) */
+  border-radius: 4px; /* Borda arredondada */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #b81604; /* Cor ao passar o mouse */
+}
+
+.categorias {
+  @apply min-w-[50%] flex flex-col items-center md:min-w-[25%] p-4 rounded-lg snap-center;
+}
+
+.categorias img {
+  @apply w-52 lg:w-56 rounded-full border-primeiracor border-4;
+ }
+
+ .categorias p {
+   @apply mt-2 text-center font-bold text-xl text-terceiracor;
+ }
+
+ .produto {
+   @apply flex flex-col lg:flex-row items-center lg:items-end gap-4 mt-5 hover:scale-105 duration-300 border-b-4 border-primeiracor rounded;
+ }
+
+ .produto img {
+   @apply h-40 w-full lg:w-40 rounded-t-lg object-cover;
+ }
+
+ .produtocard {
+  @apply flex justify-between items-center sm:items-end gap-4 mt-3 w-full;
+ }
+
+ .produtocard p {
+  @apply text-terceiracor font-bold text-3xl;
+ }
+
+ .popapfundo {
+  @apply bg-quintacor py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[450px];
+ }
+
+ .popapfundo input {
+  @apply w-full rounded-md my-2 p-2;
+ }
+
+ .popapfundo select {
+  @apply w-full rounded-md my-2 p-2;
+ }
+
+
