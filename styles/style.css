@@ -48,7 +48,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .categorias img {
-  @apply w-52 lg:w-56 rounded-full border-primeiracor border-4;
+  @apply w-64 lg:w-44 rounded-full border-primeiracor border-4;
  }
 
  .categorias p {
@@ -56,11 +56,11 @@ body::-webkit-scrollbar-thumb:hover {
  }
 
  .produto {
-   @apply flex flex-col lg:flex-row items-center lg:items-end gap-4 mt-5 hover:scale-105 duration-300 border-b-4 border-primeiracor rounded;
+   @apply flex flex-col md:flex-row items-center md:items-end gap-4 mt-5 hover:scale-105 duration-300 border-b-4 border-primeiracor rounded;
  }
 
  .produto img {
-   @apply h-40 w-full lg:w-40 rounded-t-lg object-cover;
+   @apply h-40 w-full md:w-40 rounded-t-lg object-cover;
  }
 
  .produtocard {

@@ -215,7 +215,7 @@ finalizarPedido.addEventListener("click", function () {
 function checkRestaurante() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora < 24;
+    return hora >= 19 && hora < 0o0;
     // Restaurante aberto
 }
 

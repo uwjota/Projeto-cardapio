@@ -14,8 +14,8 @@ module.exports = {
         'sans': ['Overlock', 'sans-serif']
       },
       backgroundImage: {
-        "home": "url('/assets/fundo.png')",
-        "categoriasbg": "url('/assets/bannercategorias.png')"
+        "home": "url('/assets/fundo.webp')",
+        "categoriasbg": "url('/assets/bannercategorias.webp')"
       }
     },
   },

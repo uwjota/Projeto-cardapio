@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTC-3">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,15 +11,13 @@
     href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
     rel="stylesheet" />
 
-
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Acorsi" />
   <meta property="og:image" content="./assets/fundo.png" />
   <meta property="og:description" content="Menu da Acorsi" />
   <meta property="og:site_name" content="Acorsi" />
 
-
-  <link href="./styles/output.css" rel="stylesheet">
+  <link href="./styles/output.css" rel="stylesheet" />
   <link rel=" shortcut icon" href="./assets/logofav.ico" type="image/x-icon" />
   <title>Acorsi</title>
 </head>
@@ -31,7 +28,10 @@
     <span class="text-terceiracor font-bold text-2xl flex text-center">Seg á Sab - 19hr às 00hr</span>
   </div>
 
-
+  <div class=" py-6 flex justify-center fixed fixed-top z-40">
+    <a href="index.html"><button
+        class="p-8 text-quintacor text-xl items-center font-bold bg-terceiracor rounded-r-full hover:scale-110 duration-300">Voltar</button></a>
+  </div>
 
   <header class="w-full h-[500px] bg-home bg-cover 2xl:pb-[40%] bg-center">
   </header>
@@ -39,7 +39,7 @@
 
 
   <nav class="max-w-5xl mx-auto p-4">
-    <h6 class="text-4xl md:text-4xl font-bold mt-6 mb-6 ml-4 text-terceiracor">Categorias:</h6>
+    <h6 class="text-3xl font-bold mt-6 mb-6 ml-4 text-terceiracor">Categorias:</h6>
     <div class="relative">
       <div id="category-slider" class="flex overflow-x-auto slider-container gap-4 snap-x snap-mandatory scroll-smooth">
         <a href="lanche.html" class="categorias slide-item">
@@ -64,13 +64,13 @@
   </nav>
 
 
-  <div class="max-w-5xl mx-auto mt-10 p-4">
-    <h6 class="text-4xl md:text-4xl font-bold mt-6 mb-6 ml-4 text-terceiracor">Mais vendidos:</h6>
+  <div class="max-w-5xl mx-auto mt-8 p-4">
+    <h6 class="text-3xl font-bold mt-6 mb-3 ml-4 text-terceiracor">Mais vendidos:</h6>
   </div>
   <div id="menu">
 
 
-    <main class="grid grid-col-1 md:grid-cols-2 mx-auto max-w-5xl gap-4 md:gap-12 px-8 mb-20">
+    <main class="grid grid-col-1 lg:grid-cols-2 mx-auto max-w-5xl gap-4 md:gap-12 px-8 mb-20">
 
 
       <div class="produto">
@@ -82,7 +82,7 @@
           <div class="produtocard">
             <p>R$22,99</p>
             <button class="bg-primeiracor px-9 py-5 rounded-t-xl add-cart hover:scale-110 duration-300"
-              data-name="sushi" data-prince="22.99">
+              data-name="Sushi" data-prince="22.99">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-cart4 text-terceiracor hover:scale-110 duration-300" viewBox="0 0 16 16">
                 <path
@@ -104,7 +104,7 @@
           <div class="produtocard">
             <p>R$35,99</p>
             <button class="bg-primeiracor px-9 py-5 rounded-t-xl add-cart hover:scale-110 duration-300"
-              data-name="lanche" data-prince="35.99">
+              data-name="Lanche" data-prince="35.99">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-cart4 text-terceiracor hover:scale-110 duration-300" viewBox="0 0 16 16">
                 <path
@@ -125,7 +125,7 @@
           <div class="produtocard">
             <p>R$54,99</p>
             <button class="bg-primeiracor px-9 py-5 rounded-t-xl add-cart hover:scale-110 duration-300"
-              data-name="pizza" data-prince="54.99">
+              data-name="Pizza" data-prince="54.99">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-cart4 text-terceiracor hover:scale-110 duration-300" viewBox="0 0 16 16">
                 <path
@@ -146,7 +146,7 @@
           <div class="produtocard">
             <p>R$41,99</p>
             <button class="bg-primeiracor px-9 py-5 rounded-t-xl add-cart hover:scale-110 duration-300"
-              data-name="porcao" data-prince="41.99">
+              data-name="Porção" data-prince="41.99">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-cart4 text-terceiracor hover:scale-110 duration-300" viewBox="0 0 16 16">
                 <path
@@ -195,6 +195,7 @@
     </div>
 
   </div>
+
 
   <button
     class="w-full px-5 text-center py-4 bg-primeiracor border-t-terceiracor hover:scale-110 duration-300 rounded-t-3xl border-t-4 fixed bottom-0 z-40 hidden justify-center items-center font-black text-terceiracor text-2xl"
