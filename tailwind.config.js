@@ -11,7 +11,7 @@ module.exports = {
         quintacor: '#000000', // cor personalizada
       },
       fontFamily: {
-        'sans': ['Overlock', 'sans-serif']
+        'sans': ['Poppins', 'sans-serif']
       },
       backgroundImage: {
         "home": "url('/assets/fundo.webp')",

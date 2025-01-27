@@ -5,16 +5,16 @@
   <meta charset="UTC-3">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
-    rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Acorsi" />
-  <meta property="og:image" content="./assets/fundo.png" />
-  <meta property="og:description" content="Menu da Acorsi" />
+  <meta property="og:image" content="./assets/fundo.webp" />
+  <meta property="og:description" content="Menu Acorsi" />
   <meta property="og:site_name" content="Acorsi" />
 
   <link href="./styles/output.css" rel="stylesheet" />
@@ -25,12 +25,13 @@
 <body class="bg-quintacor">
 
   <div class=" px-4 py-2 flex justify-center" id="data-hora">
-    <span class="text-terceiracor font-bold text-2xl flex text-center">Seg á Sab - 19hr às 00hr</span>
+    <span class="text-terceiracor font-semibold text-2xl flex text-center">Seg á Sab - 19hr às 00hr</span>
   </div>
 
-  <div class=" py-6 flex justify-center fixed fixed-top z-40">
+  <div class="py-6 flex justify-center fixed fixed-top z-40">
     <a href="index.html"><button
-        class="p-8 text-quintacor text-xl items-center font-bold bg-terceiracor rounded-r-full hover:scale-110 duration-300">Voltar</button></a>
+        class="p-2 items-center bg-terceiracor rounded-r-full hover:scale-110 duration-300"><img
+          src="./assets/pontaldeliverysvg.svg" class="w-20 rounded-full" alt="Logo Pontal delivery"></button></a>
   </div>
 
   <header class="w-full h-[500px] bg-home bg-cover 2xl:pb-[40%] bg-center">
@@ -39,7 +40,7 @@
 
 
   <nav class="max-w-5xl mx-auto p-4">
-    <h6 class="text-3xl font-bold mt-6 mb-6 ml-4 text-terceiracor">Categorias:</h6>
+    <h6 class="text-3xl font-extrabold mt-6 mb-6 ml-4 text-terceiracor">Categorias:</h6>
     <div class="relative">
       <div id="category-slider" class="flex overflow-x-auto slider-container gap-4 snap-x snap-mandatory scroll-smooth">
         <a href="lanche.html" class="categorias slide-item">
@@ -76,7 +77,7 @@
       <div class="produto">
         <img src="./assets/sushi.jpg" alt="Sushi" />
         <div class="w-full">
-          <p class="text-terceiracor text-2xl font-black">Sushi</p>
+          <p class="text-terceiracor text-2xl font-bold">Sushi</p>
           <p class="text-terceiracor text-1xl md:text-xl">lorem in psun lorem in psunin psunlorem in psun lorem in psun
           </p>
           <div class="produtocard">
@@ -98,7 +99,7 @@
       <div class="produto">
         <img src="./assets/lanche.jpg" alt="Lanche" />
         <div class="w-full">
-          <p class="text-terceiracor text-2xl font-black">Lanche</p>
+          <p class="text-terceiracor text-2xl font-bold">Lanche</p>
           <p class="text-terceiracor text-1xl md:text-xl">lorem in psun lorem in psunin psunlorem in psun lorem in psun
           </p>
           <div class="produtocard">
@@ -120,7 +121,7 @@
       <div class="produto">
         <img src="./assets/pizza.jpg" alt="Pizza" />
         <div class="w-full">
-          <p class="text-terceiracor text-2xl font-black">Pizza</p>
+          <p class="text-terceiracor text-2xl font-bold">Pizza</p>
           <p class="text-terceiracor text-1xl md:text-xl">lorem in psun psunlorem in psun lorem in psun</p>
           <div class="produtocard">
             <p>R$54,99</p>
@@ -141,7 +142,7 @@
       <div class="produto">
         <img src="./assets/porcao.jpg" alt="Porção" />
         <div class="w-full">
-          <p class="text-terceiracor text-2xl font-black">Porção</p>
+          <p class="text-terceiracor text-2xl font-bold">Porção</p>
           <p class="text-terceiracor text-1xl md:text-xl">lorem in psun psunlorem</p>
           <div class="produtocard">
             <p>R$41,99</p>
@@ -169,16 +170,16 @@
   <div class="bg-quintacor/65 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
     id="cart-menu">
     <div class="popapfundo">
-      <h2 class="text-center text-terceiracor font-bold text-2xl mb-3">Seus Pedidos:</h2>
+      <h2>Seus Pedidos:</h2>
       <div id="cart-items" class="flex justify-between flex-col mb-4"></div>
       <p class="font-bold text-center text-terceiracor text-2xl mb-2">Valor: <span id="total"
           class="text-quartacor">R$0,00</span>
       </p>
-      <p class="font-bold mt-4 text-terceiracor text-xl">Algo para ser alterado:</p>
+      <p class="mt-4 text-terceiracor text-xl">Algo para ser alterado:</p>
       <input type="text" id="alteracao" placeholder="Digite aqui..." maxlength="60">
-      <p class="font-bold mt-1 text-terceiracor text-xl">Seu endereço:</p>
+      <p class="paragrafopop">Seu endereço:</p>
       <input type="text" id="endereco" placeholder="Digite aqui..." maxlength="60">
-      <p class="font-bold mt-1 text-terceiracor text-xl">Método de pagamento:</p>
+      <p class="paragrafopop">Método de pagamento:</p>
       <select id="metodo-pagamento">
         <option value="" disabled selected>Escolha uma opção</option>
         <option value="pix">Pix</option>
@@ -198,7 +199,7 @@
 
 
   <button
-    class="w-full px-5 text-center py-4 bg-primeiracor border-t-terceiracor hover:scale-110 duration-300 rounded-t-3xl border-t-4 fixed bottom-0 z-40 hidden justify-center items-center font-black text-terceiracor text-2xl"
+    class="w-full px-5 text-center py-4 bg-primeiracor border-t-terceiracor hover:scale-110 duration-300 rounded-t-3xl border-t-4 fixed bottom-0 z-40 hidden justify-center items-center font-bold text-terceiracor text-2xl"
     id="cart-pedido">
     (<span id="cart-valor">0</span>)
     Confirmar Pedido

@@ -74,8 +74,8 @@ function updateCartModal() {
         cartElement.innerHTML = `
             <div class="flex items-center justify-evenly">
                 <div>
-                    <p class="text-white text-2xl font-bold md:text-3xl">${item.nome}</p>
-                    <p class="text-white text-xl font-black md:text-2xl">R$ ${item.preco.toFixed(2)}</p>
+                    <p class="text-white text-2xl font-semibold md:text-3xl">${item.nome}</p>
+                    <p class="text-white text-xl font-bold md:text-2xl">R$ ${item.preco.toFixed(2)}</p>
                 </div>
                 <p class="text-white text-1xl md:text-2xl">Qtd: ${item.quantidade}</p>
                 <button class="text-white remove-cart-btn font-bold bg-red-700 p-3 text-1xl rounded-lg hover:bg-red-500 duration-300 md:text-2xl" data-name="${item.nome}">Remover</button>
@@ -131,7 +131,7 @@ finalizarPedido.addEventListener("click", function () {
     const isOpen = checkRestaurante();
     if (!isOpen) {
         Toastify({
-            text: "Restaurante Fechado no Momento!",
+            text: "Fechado no Momento!",
             duration: 3000,
             close: true,
             gravity: "top", // `top` or `bottom`

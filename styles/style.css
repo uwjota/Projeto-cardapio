@@ -43,6 +43,11 @@ body::-webkit-scrollbar-thumb:hover {
   background: #b81604; /* Cor ao passar o mouse */
 }
 
+
+.h6categorias {
+  @apply text-7xl font-extrabold text-center text-terceiracor;
+}
+
 .categorias {
   @apply min-w-[50%] flex flex-col items-center md:min-w-[25%] p-4 rounded-lg snap-center;
 }
@@ -52,7 +57,7 @@ body::-webkit-scrollbar-thumb:hover {
  }
 
  .categorias p {
-   @apply mt-2 text-center font-bold text-xl text-terceiracor;
+   @apply mt-2 text-center font-semibold text-2xl text-terceiracor;
  }
 
  .produto {
@@ -68,11 +73,15 @@ body::-webkit-scrollbar-thumb:hover {
  }
 
  .produtocard p {
-  @apply text-terceiracor font-bold text-3xl;
+  @apply text-terceiracor font-semibold text-3xl;
  }
 
  .popapfundo {
   @apply bg-quintacor py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[450px];
+ }
+
+ .popapfundo h2 {
+  @apply text-center text-terceiracor font-bold text-2xl mb-3;
  }
 
  .popapfundo input {
@@ -83,4 +92,10 @@ body::-webkit-scrollbar-thumb:hover {
   @apply w-full rounded-md my-2 p-2;
  }
 
+ .paragrafopop {
+  @apply mt-1 text-terceiracor text-xl;
+ }
 
+.voltarbtn {
+  @apply py-8 px-6 text-quintacor text-xl items-center font-semibold bg-terceiracor rounded-r-full hover:scale-110 duration-300;
+}
