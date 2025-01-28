@@ -165,6 +165,22 @@ finalizarPedido.addEventListener("click", function () {
     const inputAlteracao = document.getElementById("alteracao");
     const secelctMetodo = document.getElementById("metodo-pagamento")
 
+    if (secelctMetodo.value === "") {
+        Toastify({
+            text: "Escolha um método de pagamento!",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: '#df1b05',
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+        return;
+    }
+
     if (inputEndereco.value === "") {
         Toastify({
             text: "Digite seu endereço!",
@@ -215,7 +231,7 @@ finalizarPedido.addEventListener("click", function () {
 function checkRestaurante() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 19 && hora < 0o0;
+    return hora >= 19 && hora < 24;
     // Restaurante aberto
 }
 

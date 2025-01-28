@@ -15,7 +15,7 @@
 
 /* Barra de progresso customizada */
 .scrollbar {
-  height: 4px;
+  height: 5px;
   background: #df1b05;
   width: 100%;
   position: absolute;
@@ -23,6 +23,7 @@
   left: 0;
   transform-origin: left;
   transition: transform 0.3s ease;
+  border-radius: 4px;
 }
 
 /* Personalização da barra de rolagem principal */
@@ -49,7 +50,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .categorias {
-  @apply min-w-[50%] flex flex-col items-center md:min-w-[25%] p-4 rounded-lg snap-center;
+  @apply min-w-[50%] flex flex-col items-center md:min-w-[26%] p-4 rounded-lg snap-center;
 }
 
 .categorias img {
@@ -76,8 +77,26 @@ body::-webkit-scrollbar-thumb:hover {
   @apply text-terceiracor font-semibold text-3xl;
  }
 
+ /* Personalização da barra de rolagem para o popup */
+.popapfundo::-webkit-scrollbar {
+  width: 10px; /* Mesma largura da barra do body */
+}
+
+.popapfundo::-webkit-scrollbar-track {
+  background: #000000; /* Mesma cor de fundo da barra */
+}
+
+.popapfundo::-webkit-scrollbar-thumb {
+  background: #df1b05; /* Mesma cor da barra (polegar) */
+  border-radius: 4px; /* Mesma borda arredondada */
+}
+
+.popapfundo::-webkit-scrollbar-thumb:hover {
+  background: #b81604; /* Mesma cor ao passar o mouse */
+}
+
  .popapfundo {
-  @apply bg-quintacor py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[450px];
+  @apply bg-quintacor max-h-[100vh] overflow-y-auto py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[450px];
  }
 
  .popapfundo h2 {
