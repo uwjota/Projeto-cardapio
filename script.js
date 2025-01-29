@@ -14,6 +14,8 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+updateCartModal();
+
 // Abrir o Pedido
 cartPedido.addEventListener("click", function () {
     cartMenu.style.display = "flex";
@@ -62,6 +64,44 @@ function addToCart(nome, preco) {
     updateCartModal();
 }
 
+
+
+/// Função para adicionar
+function addToCart(nome, preco) {
+    const existeItem = cart.find(item => item.nome === nome);
+
+    // Verifica a quantidade total no carrinho
+    const totalQuantidade = cart.reduce((acc, item) => acc + item.quantidade, 0);
+
+    if (totalQuantidade >= 60) {
+        // Se a quantidade total for maior ou igual a 60, não adiciona mais itens
+        Toastify({
+            text: "Limite de 60 itens alcançado no carrinho.",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: '#df1b05',
+            }
+        }).showToast();
+        return;
+    }
+
+    if (existeItem) {
+        existeItem.quantidade += 1;
+    } else {
+        cart.push({
+            nome,
+            preco,
+            quantidade: 1,
+        });
+    }
+
+    saveCart(); // Salva no localStorage
+    updateCartModal();
+}
+
 // Atualizar pedido
 function updateCartModal() {
     cartItems.innerHTML = "";
@@ -72,13 +112,22 @@ function updateCartModal() {
         cartElement.classList.add("flex", "justify-between", "mb-2", "flex-col");
 
         cartElement.innerHTML = `
-            <div class="flex items-center justify-evenly">
+            <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-white text-2xl font-semibold md:text-3xl">${item.nome}</p>
-                    <p class="text-white text-xl font-bold md:text-2xl">R$ ${item.preco.toFixed(2)}</p>
+                    <p class="text-white font-semibold text-3xl">${item.nome}</p>
+                    <p class="text-white font-bold text-3xl">R$ ${item.preco.toFixed(2)}</p>
                 </div>
-                <p class="text-white text-1xl md:text-2xl">Qtd: ${item.quantidade}</p>
-                <button class="text-white remove-cart-btn font-bold bg-red-700 p-3 text-1xl rounded-lg hover:bg-red-500 duration-300 md:text-2xl" data-name="${item.nome}">Remover</button>
+                <div class="flex-col flex items-end w-24">
+                    <input 
+                        type="number" 
+                        value="${item.quantidade}" 
+                        class="quantidade-input text-black text-center text-xl md:text-2xl rounded-lg" 
+                        min="1"
+                        data-name="${item.nome}"
+                        maxlength="60" 
+                        oninput="limitInputLength(event)"
+                    />
+                <button class="text-white remove-cart-btn font-bold bg-primeiracor p-2 text-xl rounded-lg hover:bg-red-500 duration-300 md:text-2xl" data-name="${item.nome}">Remover</button>
             </div>
         `;
 
@@ -94,15 +143,44 @@ function updateCartModal() {
 
     cartValor.textContent = cart.length;
 
-    // Verifica se o carrinho tem itens e mostra ou esconde o botão de confirmar pedido
     if (cart.length > 0) {
-        cartPedido.classList.remove('hidden');
+        cartPedido.classList.remove('hidden'); // Exibe o botão do carrinho
     } else {
-        cartPedido.classList.add('hidden');
+        cartPedido.classList.add('hidden'); // Esconde o botão do carrinho
     }
 }
 
-updateCartModal();
+// Limitar o número de caracteres no input de quantidade
+function limitInputLength(event) {
+    if (event.target.value.length > 2) { // Limitar para 2 caracteres
+        event.target.value = event.target.value.slice(0, 2);
+    }
+
+    // Garantir que a quantidade não ultrapasse 60
+    if (parseInt(event.target.value) > 60) {
+        event.target.value = 60;
+    }
+}
+
+// Evento para atualizar a quantidade do item no carrinho
+cartItems.addEventListener("input", function (event) {
+    if (event.target.classList.contains("quantidade-input")) {
+        const nome = event.target.getAttribute("data-name");
+        const quantidade = parseInt(event.target.value);
+
+        // Se a quantidade for menor que 1, remove o item
+        if (quantidade <= 0 || isNaN(quantidade)) {
+            removeItemsCard(nome);
+        } else {
+            const item = cart.find(item => item.nome === nome);
+            if (item) {
+                item.quantidade = quantidade;
+                saveCart(); // Salva no localStorage
+                updateCartModal();
+            }
+        }
+    }
+});
 
 // Função para remover Pedido
 cartItems.addEventListener("click", function (event) {
@@ -112,19 +190,16 @@ cartItems.addEventListener("click", function (event) {
     }
 });
 
+// Função para remover item do carrinho
 function removeItemsCard(nome) {
     const index = cart.findIndex(item => item.nome === nome);
     if (index !== -1) {
-        const item = cart[index];
-        if (item.quantidade > 1) {
-            item.quantidade -= 1;
-        } else {
-            cart.splice(index, 1);
-        }
+        cart.splice(index, 1); // Remove o item do carrinho
         saveCart(); // Salva no localStorage
         updateCartModal();
     }
 }
+
 
 // Finalizar pedido
 finalizarPedido.addEventListener("click", function () {

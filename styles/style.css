@@ -96,7 +96,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
  .popapfundo {
-  @apply bg-quintacor max-h-[100vh] overflow-y-auto py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[450px];
+  @apply bg-quintacor max-h-[100vh] overflow-y-auto py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[50%];
  }
 
  .popapfundo h2 {
