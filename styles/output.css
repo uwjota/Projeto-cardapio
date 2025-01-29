@@ -683,6 +683,10 @@ video {
   inset: -0.25rem;
 }
 
+.inset-0 {
+  inset: 0px;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -800,12 +804,16 @@ video {
   margin-top: 1rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .box-border {
@@ -907,6 +915,14 @@ video {
   display: none;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
 .h-\[500px\] {
   height: 500px;
 }
@@ -915,8 +931,16 @@ video {
   height: 100%;
 }
 
-.w-20 {
-  width: 5rem;
+.h-52 {
+  height: 13rem;
+}
+
+.h-64 {
+  height: 16rem;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-\[this-is\\\\\] {
@@ -935,12 +959,12 @@ video {
   width: 100%;
 }
 
-.w-24 {
-  width: 6rem;
-}
-
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
 }
 
 .flex-shrink {
@@ -1473,6 +1497,26 @@ video {
   gap: 1rem;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+.gap-14 {
+  gap: 3.5rem;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -1795,6 +1839,10 @@ video {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .rounded-b {
@@ -2357,6 +2405,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-primeiracor {
+  --tw-text-opacity: 1;
+  color: rgb(223 27 5 / var(--tw-text-opacity, 1));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2796,12 +2849,12 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .categorias {
-    min-width: 26%;
+    min-width: 27%;
   }
 }
 
 .categorias img {
-  width: 16rem;
+  width: 18rem;
   border-radius: 9999px;
   border-width: 4px;
   --tw-border-opacity: 1;
@@ -2810,7 +2863,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1024px) {
   .categorias img {
-    width: 11rem;
+    width: 12rem;
   }
 }
 
@@ -2825,7 +2878,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .produto {
-  margin-top: 1.25rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3051,6 +3104,11 @@ body::-webkit-scrollbar-thumb:hover {
 .hover\:text-terceiracor:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-primeiracor:hover {
+  --tw-text-opacity: 1;
+  color: rgb(223 27 5 / var(--tw-text-opacity, 1));
 }
 
 .before\:hover\:text-center:hover::before {

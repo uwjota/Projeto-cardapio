@@ -50,11 +50,11 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .categorias {
-  @apply min-w-[50%] flex flex-col items-center md:min-w-[26%] p-4 rounded-lg snap-center;
+  @apply min-w-[50%] flex flex-col items-center md:min-w-[27%] p-4 rounded-lg snap-center;
 }
 
 .categorias img {
-  @apply w-64 lg:w-44 rounded-full border-primeiracor border-4;
+  @apply w-72 lg:w-48 rounded-full border-primeiracor border-4;
  }
 
  .categorias p {
@@ -62,7 +62,7 @@ body::-webkit-scrollbar-thumb:hover {
  }
 
  .produto {
-   @apply flex flex-col md:flex-row items-center md:items-end gap-4 mt-5 hover:scale-105 duration-300 border-b-4 border-primeiracor rounded;
+   @apply flex flex-col md:flex-row items-center md:items-end gap-4 mt-8 hover:scale-105 duration-300 border-b-4 border-primeiracor rounded;
  }
 
  .produto img {
