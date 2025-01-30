@@ -82,8 +82,8 @@ function updateCartModal() {
         cartElement.classList.add("flex", "justify-between", "mb-4");
 
         cartElement.innerHTML = `
-            <div>
-                <p class="text-white font-semibold text-2xl">${item.nome}</p>
+            <div class="overflow-x-hidden">
+                <p class="text-white font-semibold break-words text-2xl">${item.nome}</p>
                 <p class="text-white font-bold text-2xl">R$ ${item.preco.toFixed(2)}</p>
             </div>
             <div class="flex items-center gap-4">
