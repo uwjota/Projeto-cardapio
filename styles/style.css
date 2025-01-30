@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  overflow-x: hidden; /* Remove rolagem horizontal */
+}
+
 .slider-item {
   transition: opacity 0.3s ease;
 }
@@ -74,7 +78,7 @@ body::-webkit-scrollbar-thumb:hover {
  }
 
  .produtocard p {
-  @apply text-terceiracor font-semibold text-3xl;
+  @apply text-terceiracor font-bold text-3xl;
  }
 
  /* Personalização da barra de rolagem para o popup */
@@ -96,7 +100,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
  .popapfundo {
-  @apply bg-quintacor max-h-[100vh] overflow-y-auto py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[50%];
+  @apply bg-quintacor max-h-[100vh] overflow-y-auto py-7 px-8 border-t-4 border-primeiracor rounded-2xl min-w-[90%] md:min-w-[550px];
  }
 
  .popapfundo h2 {

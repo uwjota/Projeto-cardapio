@@ -7,6 +7,7 @@ const finalizarPedido = document.getElementById("finalizar-pedido");
 const fecharMenu = document.getElementById("fechar-menu");
 const cartValor = document.getElementById("cart-valor");
 
+
 let cart = JSON.parse(localStorage.getItem("cart")) || []; // Recupera o carrinho do localStorage
 
 // Salva o carrinho no localStorage
@@ -66,40 +67,9 @@ function addToCart(nome, preco) {
 
 
 
-/// Função para adicionar
+// Função para adicionar ao carrinho
 function addToCart(nome, preco) {
-    const existeItem = cart.find(item => item.nome === nome);
-
-    // Verifica a quantidade total no carrinho
-    const totalQuantidade = cart.reduce((acc, item) => acc + item.quantidade, 0);
-
-    if (totalQuantidade >= 60) {
-        // Se a quantidade total for maior ou igual a 60, não adiciona mais itens
-        Toastify({
-            text: "Limite de 60 itens alcançado no carrinho.",
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "center",
-            style: {
-                background: '#df1b05',
-            }
-        }).showToast();
-        return;
-    }
-
-    if (existeItem) {
-        existeItem.quantidade += 1;
-    } else {
-        cart.push({
-            nome,
-            preco,
-            quantidade: 1,
-        });
-    }
-
-    saveCart(); // Salva no localStorage
-    updateCartModal();
+    alterarQuantidade(nome, 1, preco);
 }
 
 // Atualizar pedido
@@ -109,30 +79,29 @@ function updateCartModal() {
 
     cart.forEach(item => {
         const cartElement = document.createElement("div");
-        cartElement.classList.add("flex", "justify-between", "mb-2", "flex-col");
+        cartElement.classList.add("flex", "justify-between", "mb-4");
 
         cartElement.innerHTML = `
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-white font-semibold text-3xl">${item.nome}</p>
-                    <p class="text-white font-bold text-3xl">R$ ${item.preco.toFixed(2)}</p>
-                </div>
-                <div class="flex-col flex items-end w-24">
-                    <input 
-                        type="number" 
-                        value="${item.quantidade}" 
-                        class="quantidade-input text-black text-center text-xl md:text-2xl rounded-lg" 
-                        min="1"
-                        data-name="${item.nome}"
-                        maxlength="60" 
-                        oninput="limitInputLength(event)"
-                    />
-                <button class="text-white remove-cart-btn font-bold bg-primeiracor p-2 text-xl rounded-lg hover:bg-red-500 duration-300 md:text-2xl" data-name="${item.nome}">Remover</button>
+            <div>
+                <p class="text-white font-semibold text-2xl">${item.nome}</p>
+                <p class="text-white font-bold text-2xl">R$ ${item.preco.toFixed(2)}</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button 
+                    class="decrement-btn bg-vermelho text-white font-bold p-4 rounded-lg hover:bg-red-700 duration-300" 
+                    data-name="${item.nome}"
+                >−</button>
+
+                <span class="text-white text-xl">${item.quantidade}</span>
+
+                <button 
+                    class="increment-btn bg-verde text-white font-bold p-4 rounded-lg hover:bg-green-700 duration-300" 
+                    data-name="${item.nome}"
+                >+</button>
             </div>
         `;
 
         total += item.preco * item.quantidade;
-
         cartItems.appendChild(cartElement);
     });
 
@@ -143,44 +112,62 @@ function updateCartModal() {
 
     cartValor.textContent = cart.length;
 
-    if (cart.length > 0) {
-        cartPedido.classList.remove('hidden'); // Exibe o botão do carrinho
-    } else {
-        cartPedido.classList.add('hidden'); // Esconde o botão do carrinho
-    }
+    cartPedido.classList.toggle('hidden', cart.length === 0);
 }
 
-// Limitar o número de caracteres no input de quantidade
-function limitInputLength(event) {
-    if (event.target.value.length > 2) { // Limitar para 2 caracteres
-        event.target.value = event.target.value.slice(0, 2);
+// Eventos para manipular quantidade
+cartItems.addEventListener("click", function (event) {
+    const nome = event.target.getAttribute("data-name");
+
+    if (event.target.classList.contains("increment-btn")) {
+        alterarQuantidade(nome, 1);
     }
 
-    // Garantir que a quantidade não ultrapasse 60
-    if (parseInt(event.target.value) > 60) {
-        event.target.value = 60;
-    }
-}
-
-// Evento para atualizar a quantidade do item no carrinho
-cartItems.addEventListener("input", function (event) {
-    if (event.target.classList.contains("quantidade-input")) {
-        const nome = event.target.getAttribute("data-name");
-        const quantidade = parseInt(event.target.value);
-
-        // Se a quantidade for menor que 1, remove o item
-        if (quantidade <= 0 || isNaN(quantidade)) {
-            removeItemsCard(nome);
-        } else {
-            const item = cart.find(item => item.nome === nome);
-            if (item) {
-                item.quantidade = quantidade;
-                saveCart(); // Salva no localStorage
-                updateCartModal();
-            }
-        }
+    if (event.target.classList.contains("decrement-btn")) {
+        alterarQuantidade(nome, -1);
     }
 });
+
+// Função para alterar quantidade
+function alterarQuantidade(nome, delta, preco = 0) {
+    let item = cart.find(item => item.nome === nome);
+
+    // Adiciona novo item se não existir e o delta for positivo
+    if (!item && delta > 0) {
+        cart.push({ nome, preco, quantidade: 0 });
+        item = cart[cart.length - 1];
+    }
+
+    if (item) {
+        item.quantidade += delta;
+
+        // Remove o item se a quantidade for 0 ou menor
+        if (item.quantidade <= 0) {
+            cart = cart.filter(i => i.nome !== nome);
+        }
+
+        // Validação de limite máximo
+        const totalQuantidade = cart.reduce((acc, item) => acc + item.quantidade, 0);
+        if (totalQuantidade > 60) {
+            item.quantidade -= delta;
+            Toastify({
+                text: "Limite de 60 itens alcançado no carrinho.",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "center",
+                style: {
+                    background: '#ff0000',
+                }
+            }).showToast();
+        }
+    }
+
+    saveCart();
+    updateCartModal();
+}
+
+
 
 // Função para remover Pedido
 cartItems.addEventListener("click", function (event) {
@@ -213,7 +200,7 @@ finalizarPedido.addEventListener("click", function () {
             position: "center", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-                background: '#df1b05',
+                background: '#ff0000',
             },
             onClick: function () { } // Callback after click
         }).showToast();
@@ -229,7 +216,7 @@ finalizarPedido.addEventListener("click", function () {
             position: "center", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-                background: '#df1b05',
+                background: '#ff0000',
             },
             onClick: function () { } // Callback after click
         }).showToast();
@@ -249,7 +236,7 @@ finalizarPedido.addEventListener("click", function () {
             position: "center", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-                background: '#df1b05',
+                background: '#ff0000',
             },
             onClick: function () { } // Callback after click
         }).showToast();
@@ -265,7 +252,7 @@ finalizarPedido.addEventListener("click", function () {
             position: "center", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-                background: '#df1b05',
+                background: '#ff0000',
             },
             onClick: function () { } // Callback after click
         }).showToast();
@@ -290,7 +277,7 @@ finalizarPedido.addEventListener("click", function () {
         position: "center", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: '#00773e',
+            background: '#04b300',
         },
         onClick: function () { } // Callback after click
     }).showToast();
@@ -306,7 +293,7 @@ finalizarPedido.addEventListener("click", function () {
 function checkRestaurante() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 19 && hora < 24;
+    return hora >= 6 && hora < 24;
     // Restaurante aberto
 }
 
@@ -314,11 +301,11 @@ const spanItem = document.getElementById("data-hora");
 const isOpen = checkRestaurante();
 
 if (isOpen) {
-    spanItem.classList.remove("bg-orange-600");
-    spanItem.classList.add("bg-green-700");
+    spanItem.classList.remove("bg-vermelho");
+    spanItem.classList.add("bg-verde");
 } else {
-    spanItem.classList.remove("bg-green-700");
-    spanItem.classList.add("bg-orange-600");
+    spanItem.classList.remove("bg-verde");
+    spanItem.classList.add("bg-vermelho");
 }
 
 

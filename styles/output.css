@@ -154,7 +154,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Poppins, sans-serif;
+  font-family: Inter, sans-serif;
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -810,10 +810,6 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .box-border {
@@ -1493,10 +1489,6 @@ video {
   gap: 1rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
-}
-
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -1865,6 +1857,11 @@ video {
   border-top-right-radius: 1.5rem;
 }
 
+.rounded-t-full {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
@@ -1978,16 +1975,6 @@ video {
   background-color: rgb(255 0 0 / var(--tw-bg-opacity, 1));
 }
 
-.bg-green-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
-}
-
-.bg-orange-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 88 12 / var(--tw-bg-opacity, 1));
-}
-
 .bg-primeiracor {
   --tw-bg-opacity: 1;
   background-color: rgb(223 27 5 / var(--tw-bg-opacity, 1));
@@ -2005,6 +1992,16 @@ video {
 .bg-terceiracor {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-verde {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 179 0 / var(--tw-bg-opacity, 1));
+}
+
+.bg-vermelho {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity, 1));
 }
 
 .bg-categoriasbg {
@@ -2143,6 +2140,10 @@ video {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .px-1 {
@@ -2349,11 +2350,6 @@ video {
 
 .text-\[\#336699\]\/\[\.35\] {
   color: rgb(51 102 153 / .35);
-}
-
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
 .text-blue-500 {
@@ -2751,6 +2747,11 @@ video {
   forced-color-adjust: none;
 }
 
+html, body {
+  overflow-x: hidden;
+  /* Remove rolagem horizontal */
+}
+
 .slider-item {
   transition: opacity 0.3s ease;
 }
@@ -2907,7 +2908,7 @@ body::-webkit-scrollbar-thumb:hover {
 .produtocard p {
   font-size: 1.875rem;
   line-height: 2.25rem;
-  font-weight: 600;
+  font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
@@ -2954,7 +2955,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .popapfundo {
-    min-width: 50%;
+    min-width: 550px;
   }
 }
 
@@ -3058,6 +3059,11 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:bg-green-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-quartacor:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 130 0 / var(--tw-bg-opacity, 1));
@@ -3066,6 +3072,11 @@ body::-webkit-scrollbar-thumb:hover {
 .hover\:bg-red-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-red-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:font-bold:hover {
@@ -3107,21 +3118,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media (min-width: 768px) {
-  .md\:flex-grow {
-    flex-grow: 1;
-  }
-
-  .md\:flex-row {
-    flex-direction: row;
-  }
-
   .md\:gap-12 {
     gap: 3rem;
-  }
-
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .md\:text-lg {
