@@ -17,17 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Bloqueia copiar, recortar e colar
   document.addEventListener('copy', function (event) {
     event.preventDefault();
-    alert('Cópia desativada!');
   });
 
   document.addEventListener('cut', function (event) {
     event.preventDefault();
-    alert('Corte desativado!');
   });
 
   document.addEventListener('paste', function (event) {
     event.preventDefault();
-    alert('Colagem desativada!');
   });
 
   // Bloqueia arrasto específico para imagens
@@ -35,6 +32,40 @@ document.addEventListener('DOMContentLoaded', function () {
   images.forEach((img) => {
     img.setAttribute('draggable', 'false');
   });
+});
 
-  console.log('Proteção contra cópia e arrasto ativada.');
+document.addEventListener('keydown', (e) => {
+  // Bloqueia F12
+  if (e.key === 'F12' || e.code === 'F12') {
+      e.preventDefault();
+      Toastify({
+          text: "Direitos Autorais e Propriedade Intelectual Reservados.",
+          duration: 3000,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+              background: '#ff0000',
+          },
+          onClick: function () { } // Callback after click
+      }).showToast();
+  }
+
+  // Bloqueia Ctrl + Shift + I, Ctrl + Shift + J e Ctrl + U
+  if ((e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key)) || (e.ctrlKey && e.key === 'U')) {
+      e.preventDefault();
+      Toastify({
+          text: "Direitos Autorais e Propriedade Intelectual Reservados.",
+          duration: 3000,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+              background: '#ff0000',
+          },
+          onClick: function () { } // Callback after click
+      }).showToast();
+  }
 });

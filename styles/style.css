@@ -54,7 +54,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .categorias {
-  @apply min-w-[50%] flex flex-col items-center md:min-w-[27%] p-4 rounded-lg snap-center;
+  @apply min-w-[50%] flex flex-col items-center md:min-w-[25%] p-4 rounded-lg snap-center;
 }
 
 .categorias img {

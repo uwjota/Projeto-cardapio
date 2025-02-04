@@ -2806,7 +2806,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .categorias {
-    min-width: 27%;
+    min-width: 25%;
   }
 }
 
@@ -3105,6 +3105,10 @@ body::-webkit-scrollbar-thumb:hover {
 @media (min-width: 768px) {
   .md\:gap-12 {
     gap: 3rem;
+  }
+
+  .md\:pr-4 {
+    padding-right: 1rem;
   }
 
   .md\:text-lg {

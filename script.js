@@ -15,6 +15,10 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+window.addEventListener('popstate', () => {
+    updateCartModal();
+});
+
 updateCartModal();
 
 // Abrir o Pedido
@@ -22,6 +26,8 @@ cartPedido.addEventListener("click", function () {
     cartMenu.style.display = "flex";
     updateCartModal();
 });
+
+
 
 // Fechar o Pedido
 cartMenu.addEventListener("click", function (event) {
