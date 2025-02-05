@@ -10,9 +10,44 @@ const cartValor = document.getElementById("cart-valor");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || []; // Recupera o carrinho do localStorage
 
+// Salva o carrinho no localStorage
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
-window.location.reload();
+updateCartModal();
 
+function handlePageChange() {
+    updateCartModal();
+}
+
+// Captura o histórico (botões voltar/avançar e swipes mobile)
+window.addEventListener('popstate', handlePageChange);
+
+// Captura cliques em links internos
+document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+
+    if (target && target.href.startsWith(window.location.origin) && !target.hasAttribute('data-no-intercept')) {
+        event.preventDefault();
+        history.pushState({}, '', target.href);
+        handlePageChange();
+    }
+});
+
+// Para recarregamento inicial
+window.addEventListener('DOMContentLoaded', handlePageChange);
+
+// Detecta navegadores com suporte ao evento pushState manual no mobile
+window.addEventListener('pushstate', handlePageChange);
+
+
+// Exemplo de navegação (se aplicável)
+function navegarPara(url) {
+    history.pushState(null, "", url);
+    console.log(`Navegando para: ${url}`);
+    // Atualiza qualquer lógica na página
+}
 
 window.addEventListener('popstate', () => {
     updateCartModal();
