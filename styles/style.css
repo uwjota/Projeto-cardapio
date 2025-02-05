@@ -4,6 +4,7 @@
 
 html, body {
   overflow-x: hidden; /* Remove rolagem horizontal */
+  scroll-behavior: smooth;
 }
 
 .slider-item {
@@ -48,9 +49,6 @@ body::-webkit-scrollbar-thumb:hover {
   background: #b81604; /* Cor ao passar o mouse */
 }
 
-.slider-container {
-  padding-right: 2rem; /* Espaço extra no final */
-}
 
 .h6categorias {
   @apply text-7xl font-extrabold text-center text-terceiracor;
@@ -59,9 +57,7 @@ body::-webkit-scrollbar-thumb:hover {
 .categorias {
   @apply min-w-[50%] flex flex-col items-center md:min-w-[25%] p-4 rounded-lg snap-center;
 }
-.categorias:last-child {
-  scroll-snap-align: end;
-}
+
 
 .categorias img {
   @apply w-72 lg:w-48 rounded-full border-primeiracor border-4;

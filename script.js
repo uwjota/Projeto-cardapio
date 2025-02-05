@@ -338,7 +338,7 @@ function updateOpacity() {
         const rect = item.getBoundingClientRect();
         const containerRect = slider.getBoundingClientRect();
         if (rect.right > containerRect.right || rect.left < containerRect.left) {
-            item.style.opacity = '0.4';
+            item.style.opacity = '0.8';
         } else {
             item.style.opacity = '1';
         }

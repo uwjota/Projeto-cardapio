@@ -2735,6 +2735,7 @@ video {
 html, body {
   overflow-x: hidden;
   /* Remove rolagem horizontal */
+  scroll-behavior: smooth;
 }
 
 .slider-item {
@@ -2785,11 +2786,6 @@ body::-webkit-scrollbar-thumb:hover {
   /* Cor ao passar o mouse */
 }
 
-.slider-container {
-  padding-right: 2rem;
-  /* Espaço extra no final */
-}
-
 .h6categorias {
   text-align: center;
   font-size: 4.5rem;
@@ -2813,10 +2809,6 @@ body::-webkit-scrollbar-thumb:hover {
   .categorias {
     min-width: 25%;
   }
-}
-
-.categorias:last-child {
-  scroll-snap-align: end;
 }
 
 .categorias img {
@@ -3118,6 +3110,10 @@ body::-webkit-scrollbar-thumb:hover {
 
   .md\:pr-6 {
     padding-right: 1.5rem;
+  }
+
+  .md\:pr-8 {
+    padding-right: 2rem;
   }
 
   .md\:text-lg {
