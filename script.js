@@ -15,29 +15,18 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-updateCartModal();
 
-function handlePageChange() {
+document.addEventListener('DOMContentLoaded', function () {
     updateCartModal();
-}
-
-// Captura o histórico (voltar/avançar e gestos mobile)
-window.addEventListener('popstate', handlePageChange);
-
-// Captura cliques em links internos
-document.addEventListener('click', function (event) {
-    const target = event.target.closest('a');
-
-    if (target && target.href.startsWith(window.location.origin) && !target.hasAttribute('data-no-intercept')) {
-        event.preventDefault(); // Previne o comportamento padrão
-        history.pushState({}, '', target.href); // Atualiza o histórico
-        window.location.href = target.href; // Redireciona para a nova URL
-        handlePageChange(); // Chama a função para atualizar o modal
-    }
 });
 
-// Carregamento inicial da página
-window.addEventListener('DOMContentLoaded', handlePageChange);
+
+
+// Abrir o Pedido
+cartPedido.addEventListener("click", function () {
+    cartMenu.style.display = "flex";
+    updateCartModal();
+});
 
 
 
