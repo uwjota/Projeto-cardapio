@@ -10,12 +10,9 @@ const cartValor = document.getElementById("cart-valor");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || []; // Recupera o carrinho do localStorage
 
-window.addEventListener("pageshow", (event) => {
-    if (event.persisted) {
-      window.location.reload();
-    }
-  });
-  
+
+window.location.reload();
+
 
 window.addEventListener('popstate', () => {
     updateCartModal();
