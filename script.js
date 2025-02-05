@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCartModal();
 });
 
+document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) {
+        // A página ficou visível novamente
+        updateCartModal();
+    }
+});
+
 
 
 // Abrir o Pedido
