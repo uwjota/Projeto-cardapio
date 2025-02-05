@@ -15,10 +15,8 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-window.addEventListener("pageshow", (event) => {
-    if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
-        updateCartModal();
-    }
+window.addEventListener("pageshow", () => {
+    updateCartModal();
 });
 
 window.addEventListener('popstate', () => {
