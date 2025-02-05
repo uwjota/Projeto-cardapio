@@ -16,10 +16,10 @@ function saveCart() {
 }
 
 window.addEventListener("pageshow", (event) => {
-    if (event.persisted) {
+    if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
         updateCartModal();
     }
-  });
+});
 
 window.addEventListener('popstate', () => {
     updateCartModal();
