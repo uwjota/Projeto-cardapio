@@ -15,9 +15,21 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-window.addEventListener("pageshow", () => {
+history.replaceState(null, "", location.href);
+
+// Evento para capturar o botão "voltar" do celular
+window.addEventListener("popstate", () => {
+    console.log("Botão voltar do celular acionado");
+    // Chama a função que você deseja executar
     updateCartModal();
 });
+
+// Exemplo de navegação (se aplicável)
+function navegarPara(url) {
+    history.pushState(null, "", url);
+    console.log(`Navegando para: ${url}`);
+    // Atualiza qualquer lógica na página
+}
 
 window.addEventListener('popstate', () => {
     updateCartModal();
