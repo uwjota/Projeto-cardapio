@@ -21,7 +21,7 @@ function handlePageChange() {
     updateCartModal();
 }
 
-// Captura o histórico (botões voltar/avançar e swipes mobile)
+// Captura o histórico (voltar/avançar e gestos mobile)
 window.addEventListener('popstate', handlePageChange);
 
 // Captura cliques em links internos
@@ -29,37 +29,15 @@ document.addEventListener('click', function (event) {
     const target = event.target.closest('a');
 
     if (target && target.href.startsWith(window.location.origin) && !target.hasAttribute('data-no-intercept')) {
-        event.preventDefault();
-        history.pushState({}, '', target.href);
-        handlePageChange();
+        event.preventDefault(); // Previne o comportamento padrão
+        history.pushState({}, '', target.href); // Atualiza o histórico
+        window.location.href = target.href; // Redireciona para a nova URL
+        handlePageChange(); // Chama a função para atualizar o modal
     }
 });
 
-// Para recarregamento inicial
+// Carregamento inicial da página
 window.addEventListener('DOMContentLoaded', handlePageChange);
-
-// Detecta navegadores com suporte ao evento pushState manual no mobile
-window.addEventListener('pushstate', handlePageChange);
-
-
-// Exemplo de navegação (se aplicável)
-function navegarPara(url) {
-    history.pushState(null, "", url);
-    console.log(`Navegando para: ${url}`);
-    // Atualiza qualquer lógica na página
-}
-
-window.addEventListener('popstate', () => {
-    updateCartModal();
-});
-
-updateCartModal();
-
-// Abrir o Pedido
-cartPedido.addEventListener("click", function () {
-    cartMenu.style.display = "flex";
-    updateCartModal();
-});
 
 
 
