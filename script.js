@@ -15,6 +15,12 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+        updateCartModal();
+    }
+  });
+
 window.addEventListener('popstate', () => {
     updateCartModal();
 });
