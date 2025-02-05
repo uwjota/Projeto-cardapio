@@ -2785,6 +2785,11 @@ body::-webkit-scrollbar-thumb:hover {
   /* Cor ao passar o mouse */
 }
 
+.slider-container {
+  padding-right: 2rem;
+  /* Espaço extra no final */
+}
+
 .h6categorias {
   text-align: center;
   font-size: 4.5rem;
@@ -2808,6 +2813,10 @@ body::-webkit-scrollbar-thumb:hover {
   .categorias {
     min-width: 25%;
   }
+}
+
+.categorias:last-child {
+  scroll-snap-align: end;
 }
 
 .categorias img {
@@ -3107,8 +3116,8 @@ body::-webkit-scrollbar-thumb:hover {
     gap: 3rem;
   }
 
-  .md\:pr-4 {
-    padding-right: 1rem;
+  .md\:pr-6 {
+    padding-right: 1.5rem;
   }
 
   .md\:text-lg {
