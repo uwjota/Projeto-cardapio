@@ -10,26 +10,12 @@ const cartValor = document.getElementById("cart-valor");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || []; // Recupera o carrinho do localStorage
 
-// Salva o carrinho no localStorage
-function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-history.replaceState(null, "", location.href);
-
-// Evento para capturar o botão "voltar" do celular
-window.addEventListener("popstate", () => {
-    console.log("Botão voltar do celular acionado");
-    // Chama a função que você deseja executar
-    updateCartModal();
-});
-
-// Exemplo de navegação (se aplicável)
-function navegarPara(url) {
-    history.pushState(null, "", url);
-    console.log(`Navegando para: ${url}`);
-    // Atualiza qualquer lógica na página
-}
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  });
+  
 
 window.addEventListener('popstate', () => {
     updateCartModal();
