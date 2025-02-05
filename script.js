@@ -16,16 +16,15 @@ function saveCart() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    updateCartModal();
-});
-
 document.addEventListener('visibilitychange', function () {
     if (!document.hidden) {
-        // A página ficou visível novamente
-        updateCartModal();
+        // Página se tornou visível novamente, recarregue a página
+        location.reload();
     }
 });
+
+updateCartModal();
+
 
 
 
